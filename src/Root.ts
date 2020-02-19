@@ -8,6 +8,7 @@ import {
   useChild
 } from "@hex-engine/2d";
 import Ball from "./Ball";
+import Paddle from "./Paddle";
 
 export default function Root() {
   useType(Root);
@@ -50,4 +51,8 @@ export default function Root() {
   );
 
   useChild(() => Ball(canvasCenter));
+  useChild(() => Paddle(new Vector(15, canvas.element.height / 2)));
+  useChild(() =>
+    Paddle(new Vector(canvas.element.width - 15, canvas.element.height / 2))
+  );
 }

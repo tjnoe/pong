@@ -15,7 +15,15 @@ export default function Ball(position: Vector) {
     Geometry({ shape: new Circle(10), position: position.clone() })
   );
 
-  useNewComponent(() => Physics.Body(geometry));
+  const physics = useNewComponent(() =>
+    Physics.Body(geometry, {
+      friction: 0,
+      frictionAir: 0,
+      frictionStatic: 0,
+      restitution: 1
+    })
+  );
+  physics.setVelocity(new Vector(-3, 0));
 
   useDraw(context => {
     context.fillStyle = "red";
